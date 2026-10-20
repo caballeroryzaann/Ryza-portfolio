@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ryza Ann Caballero | Portfolio</title>
+  <meta name="description" content="Ryza Ann Caballero's personal portfolio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #10110f;
+      --text: #f6f2e9;
+      --muted: #c0beb6;
+      --accent: #c9a87c;
+      --border: rgba(255,255,255,.15);
+      --panel: rgba(17,18,16,.78);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #111;
+    }
+
+    /* BACKGROUND IMAGE */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image: url("ryza%20image.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .background-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(10,11,10,.85),
+          rgba(10,11,10,.65),
+          rgba(10,11,10,.50)
+        ),
+        linear-gradient(
+          180deg,
+          rgba(10,11,10,.15),
+          rgba(10,11,10,.45),
+          #10110f
+        );
+    }
+
+    /* NAVIGATION */
+
+    .nav {
+      width: 100%;
+      min-height: 78px;
+      padding: 18px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15,16,14,.45);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .nav nav a {
+      color: #e2dfd7;
+      font-size: 12px;
+      transition: color .25s;
+    }
+
+    .nav nav a:hover {
+      color: var(--accent);
+    }
+
+    /* CENTERED HERO SECTION */
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 120px 8% 65px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+    }
+
+    /* PROFILE PICTURE */
+
+    .profile-container {
+      width: 150px;
+      height: 150px;
+      padding: 5px;
+      margin: 0 auto 25px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      background: rgba(201,168,124,.12);
+      box-shadow: 0 0 30px rgba(201,168,124,.22);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .profile-container:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(201,168,124,.4);
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+    }
+
+    .eyebrow,
+    .section-label,
+    .project-number {
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+    }
+
+    .eyebrow {
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(58px, 9vw, 105px);
+      line-height: .98;
+      font-weight: 600;
+      letter-spacing: -2px;
+      text-align: center;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .tagline {
+      max-width: 700px;
+      margin: 25px auto 0;
+      font-size: clamp(14px, 2vw, 18px);
+      text-align: center;
+    }
+
+    .hero-description {
+      max-width: 500px;
+      margin: 12px auto 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      min-height: 46px;
+      padding: 11px 21px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 2px;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #16140f;
+      border-color: var(--accent);
+    }
+
+    .btn.primary:hover {
+      background: #e1c49c;
+      color: #111;
+    }
+
+    .scroll-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 42px auto 0;
+      color: #c4c0b7;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .scroll-note span {
+      width: 34px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* CONTENT SECTIONS */
+
+    .panel {
+      width: min(1080px, 84%);
+      margin: 0 auto 32px;
+      padding: clamp(28px, 5vw, 58px);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      scroll-margin-top: 25px;
+    }
+
+    .section-label {
+      margin-bottom: 12px;
+    }
+
+    .panel h2 {
+      margin-bottom: 24px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 5vw, 55px);
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    .panel h2 span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .panel > p:not(.section-label):not(.section-description) {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    /* PROJECTS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 25px 21px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      transition: .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(201,168,124,.6);
+    }
+
+    .project-number {
+      margin-bottom: 14px;
+      font-size: 9px;
+    }
+
+    .card h3,
+    .item h3 {
+      margin-bottom: 12px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .card > p:not(.project-number) {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 20px;
+    }
+
+    .tags span {
+      padding: 5px 9px;
+      border: 1px solid rgba(201,168,124,.35);
+      border-radius: 2px;
+      color: #dfc7a8;
+      font-size: 9px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: auto;
+      padding-top: 22px;
+    }
+
+    .links a {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .links a:hover {
+      color: #fff;
+    }
+
+    /* SKILLS */
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-top: 28px;
+      list-style: none;
+    }
+
+    .pills li {
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: rgba(255,255,255,.035);
+      color: #e8e4db;
+      font-size: 12px;
+      transition: .25s;
+    }
+
+    .pills li:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* EDUCATION */
+
+    .timeline {
+      margin-top: 30px;
+      padding-left: 24px;
+      border-left: 1px solid rgba(201,168,124,.5);
+    }
+
+    .item {
+      position: relative;
+      padding: 0 0 34px 16px;
+    }
+
+    .item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 7px;
+      left: -30px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(201,168,124,.35);
+    }
+
+    .meta {
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .item > p:not(.meta) {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .item .placeholder-note {
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* CONTACT */
+
+    .contact-panel {
+      margin-bottom: 65px;
+    }
+
+    .contact-panel .buttons {
+      justify-content: flex-start;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 25px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--border);
+      background: rgba(10,11,10,.75);
+    }
+
+    footer p,
+    footer a {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    footer a {
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 900px) {
+      .nav {
+        padding: 18px 5%;
+      }
+
+      .nav nav {
+        gap: 14px;
+      }
+
+      .panel {
+        width: 90%;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      .nav {
+        padding: 14px 5%;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .logo {
+        font-size: 28px;
+      }
+
+      .nav nav {
+        width: 100%;
+        justify-content: center;
+        gap: 10px 15px;
+      }
+
+      .nav nav a {
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 165px 7% 65px;
+      }
+
+      .profile-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 22px;
+      }
+
+      .hero h1 {
+        font-size: clamp(49px, 13vw, 75px);
+        letter-spacing: -1px;
+      }
+
+      .tagline {
+        font-size: 14px;
+      }
+
+      .hero-description {
+        font-size: 12px;
+      }
+
+      .panel {
+        width: 92%;
+        padding: 27px 21px;
+        margin-bottom: 20px;
+      }
+
+      .panel h2 {
+        font-size: 38px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .pills {
+        gap: 8px;
+      }
+
+      .pills li {
+        padding: 8px 11px;
+        font-size: 11px;
+      }
+
+      .buttons {
+        gap: 10px;
+      }
+
+      .btn {
+        padding: 10px 14px;
+        font-size: 10px;
+      }
+
+      .contact-panel .buttons {
+        justify-content: center;
+      }
+
+      footer {
+        padding: 22px 5%;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="background"></div>
+  <div class="background-overlay"></div>
+
+  <!-- NAVIGATION -->
+  <header class="nav">
+    <a class="logo" href="#top">RC<span>.</span></a>
+
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- CENTERED HERO -->
+    <section class="hero">
+
+      <div class="profile-container">
+        <img
+          src="profile image/profile.png"
+          class="profile-image"
+        >
+      </div>
+
+      <p class="eyebrow">WELCOME TO MY PORTFOLIO</p>
+
+      <h1>
+        Ryza Ann<br>
+        <span>Caballero</span>
+      </h1>
+
+      <p class="tagline">
+        Computer Engineering Student |
+        Aspiring Software Developer &amp; Data Analyst
+      </p>
+
+      <p class="hero-description">
+        Exploring technology, building meaningful projects,
+        and turning ideas into practical solutions.
+      </p>
+
+      <div class="buttons">
+        <a class="btn primary" href="#projects">
+          Explore My Work ↗
+        </a>
+
+        <a class="btn" href="#contact">
+          Get In Touch
+        </a>
+      </div>
+
+      <div class="scroll-note">
+        <span></span>
+        SCROLL TO DISCOVER
+        <span></span>
+      </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="panel">
+      <p class="section-label">01 — INTRODUCTION</p>
+      <h2>About <span>Me</span></h2>
+
+      <p>
+        Hi! I'm Ryza Ann Caballero, a Computer Engineering student
+        passionate about software development, data analysis, and
+        technology-driven solutions. I enjoy learning new skills,
+        collaborating on projects, and creating applications that
+        address real-world problems. I'm looking forward to opportunities
+        where I can grow, contribute, and gain hands-on experience.
+      </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="panel">
+      <p class="section-label">02 — SELECTED WORK</p>
+      <h2>Featured <span>Projects</span></h2>
+
+      <div class="grid">
+
+        <article class="card">
+          <p class="project-number">PROJECT 01</p>
+          <h3>Dialycare</h3>
+
+          <p>
+            A project focused on helping dialysis patients manage
+            appointments more conveniently and efficiently.
+          </p>
+
+          <div class="tags">
+            <span>Python</span>
+            <span>HTML</span>
+          </div>
+
+          <div class="links">
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+              View Code ↗
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="project-number">PROJECT 02</p>
+          <h3>AURAGUARD AI</h3>
+
+          <p>
+            A proposed system exploring student stress and fatigue
+            monitoring using computer vision and thermal sensing.
+          </p>
+
+          <div class="tags">
+            <span>JavaScript</span>
+            <span>HTML/CSS</span>
+            <span>AI</span>
+          </div>
+
+          <div class="links">
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+              View Code ↗
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="project-number">PROJECT 03</p>
+          <h3>AGRITECH</h3>
+
+          <p>
+            An agricultural automation concept designed to assist
+            with crop harvesting and improve farming efficiency.
+          </p>
+
+          <div class="tags">
+            <span>Automation</span>
+            <span>Engineering</span>
+            <span>Technology</span>
+          </div>
+
+          <div class="links">
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+              View Code ↗
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="panel">
+      <p class="section-label">03 — WHAT I DO</p>
+      <h2>Skills &amp; <span>Expertise</span></h2>
+
+      <p class="section-description">
+        Skills and tools I'm learning and developing through my studies
+        and projects.
+      </p>
+
+      <ul class="pills">
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>HTML &amp; CSS</li>
+        <li>Git &amp; GitHub</li>
+        <li>SQL</li>
+        <li>Data Analysis</li>
+        <li>Problem Solving</li>
+        <li>Teamwork</li>
+        <li>Communication</li>
+        <li>malakas mag inom</li>
+      </ul>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="panel">
+      <p class="section-label">04 — MY JOURNEY</p>
+      <h2>Education &amp; <span>Experience</span></h2>
+
+      <div class="timeline">
+
+        <div class="item">
+          <span class="timeline-dot"></span>
+          <p class="meta">2023 — PRESENT</p>
+          <h3>BS in Computer Engineering</h3>
+
+          <p>
+            Currently pursuing a degree in Computer Engineering,
+            developing knowledge in programming, computing systems,
+            and engineering problem-solving.
+          </p>
+
+          <p class="placeholder-note">
+            ICCT Colleges.
+          </p>
+        </div>
+
+        <div class="item">
+          <span class="timeline-dot"></span>
+          <p class="meta">PROJECT EXPERIENCE</p>
+          <h3>Academic &amp; Team Projects</h3>
+
+          <p>
+            Collaborating on projects involving healthcare,
+            AI-assisted monitoring, and agricultural automation.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="panel contact-panel">
+      <p class="section-label">05 — LET'S CONNECT</p>
+      <h2>Let's Build Something <span>Meaningful.</span></h2>
+
+      <p>
+        I'm open to learning opportunities, internships,
+        collaborations, and projects that help me grow in technology.
+      </p>
+
+      <div class="buttons">
+        <a class="btn primary" href="mailto:your-email@example.com">
+          Email Me ↗
+        </a>
+
+        <a
+          class="btn"
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub ↗
+        </a>
+
+        <a
+          class="btn"
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn ↗
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Ryza Ann Caballero</p>
+    <a href="#top">BACK TO TOP ↑</a>
+  </footer>
+
+</body>
+</html>
+
